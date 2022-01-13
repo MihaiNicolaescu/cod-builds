@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "187229233243",
+    "firebase_url": "https://cod-builds-default-rtdb.firebaseio.com",
+    "project_id": "cod-builds",
+    "storage_bucket": "cod-builds.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:187229233243:android:b86a203552f9dafc75df7e",
+        "android_client_info": {
+          "package_name": "com.example.callofdutybestbuilds"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "187229233243-1k2du6u929e30jnhlr3jspn26hmks6nf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.callofdutybestbuilds",
+            "certificate_hash": "d5eac7edbfbc85366e5b9d50ecf35cc2765abd6b"
+          }
+        },
+        {
+          "client_id": "187229233243-i05sig60q1njbgap38rlootjt34539f3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfrtblNOf2CqomMJZamO4JdEHA_8dxCzc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "187229233243-i05sig60q1njbgap38rlootjt34539f3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
