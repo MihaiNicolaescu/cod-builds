@@ -29,7 +29,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class Login extends AppCompatActivity {
     Button signupButton, loginButton;
-    TextView username, password;
+    TextView email, password;
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
     private static final String TAG = "Login";
@@ -40,11 +40,12 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
         setContentView(R.layout.login);
 
         signupButton = findViewById(R.id.signUpButton);
         loginButton = findViewById(R.id.loginButton);
-        username = findViewById(R.id.username);
+        email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         mAuth = FirebaseAuth.getInstance();
 
@@ -72,6 +73,27 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
+                        .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Log.w(TAG, "signInWithCredential:success");
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    updateUI(user);
+                                } else {
+                                    Log.w(TAG, "signInWithCredential:failure", task.getException());
+                                    Toast.makeText(getApplicationContext(), "Authentication Failed", Toast.LENGTH_SHORT);
+                                    updateUI(null);
+                                }
+                            }
+                        });
+            }
+        });
+
 
 
     }
@@ -81,7 +103,8 @@ public class Login extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
+        if(currentUser != null) updateUI(currentUser);
+
     }
 
     private void updateUI(FirebaseUser user) {

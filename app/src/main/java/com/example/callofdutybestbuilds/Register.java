@@ -35,6 +35,7 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
         setContentView(R.layout.register);
 
         registerButton = findViewById(R.id.registerButton);
@@ -76,6 +77,16 @@ public class Register extends AppCompatActivity {
 
                     password.requestFocus();
                     return;
+                }else if(password.length() < 6) {
+                    Context context = getApplicationContext();
+                    CharSequence sequence = "Password must have minimum 6 characters!";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, sequence, duration);
+                    toast.show();
+
+                    passwordCheck.requestFocus();
+                    return;
                 }else if(passwordCheckText.isEmpty()) {
                     Context context = getApplicationContext();
                     CharSequence sequence = "Password check cannot be empty!";
@@ -110,7 +121,7 @@ public class Register extends AppCompatActivity {
                                 updateUI(user);
                             }else{
                                 Log.w(TAG,"ERROR ====" + task.getException());
-                                Toast.makeText(Register.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Register.this, "Incorrect email format!", Toast.LENGTH_SHORT).show();
                                 updateUI(null);
                             }
                         }
