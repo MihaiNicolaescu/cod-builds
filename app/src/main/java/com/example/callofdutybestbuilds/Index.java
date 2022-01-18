@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Index extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    Button metaWeaponsButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -24,7 +25,14 @@ public class Index extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.index);
+        metaWeaponsButton = findViewById(R.id.buttonMetaWeapons);
 
+        metaWeaponsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Index.this, meta_weapons.class));
+            }
+        });
 
 
     }
