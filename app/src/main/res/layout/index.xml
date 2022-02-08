@@ -11,30 +11,30 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="105dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         app:layout_constraintTop_toTopOf="parent"
         android:height="50dp"
-        android:background="@drawable/meta_weapons"
-        android:id="@+id/buttonMetaWeapons"/>
+        android:background="@drawable/index_meta"
+        android:id="@+id/buttonMetaWeapons"
+        android:text="Meta weapons"
+        android:textAllCaps="false"
+        android:gravity="right|center"
+        android:padding="10dp"
+        android:textSize="30dp"
+        android:textColor="@color/white"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="105dp"
-        android:layout_marginTop="0dp"
+
+    <FrameLayout
+        android:id="@+id/adView_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="500dp"
         app:layout_constraintTop_toBottomOf="@id/buttonMetaWeapons"
-        android:height="50dp"
-        android:background="@drawable/weapons_builds"
-        android:id="@+id/buttonBuildsWeapons"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="105dp"
-        android:layout_marginTop="0dp"
-        app:layout_constraintTop_toBottomOf="@id/buttonBuildsWeapons"
-        android:height="50dp"
-        android:background="@drawable/news_weapons"
-        android:id="@+id/buttonNewsWeapons"/>
-
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

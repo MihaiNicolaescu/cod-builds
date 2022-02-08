@@ -3,14 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/mihai/AndroidStudioProjects/CallOfDutyBestBuilds/app/src/main/res/drawable/button_skin.xml" value="0.2859375" />
+        <entry key="..\:/Users/mihai/AndroidStudioProjects/CallOfDutyBestBuilds/app/src/main/res/drawable/ic_apk_box.xml" value="0.2859375" />
         <entry key="..\:/Users/mihai/AndroidStudioProjects/CallOfDutyBestBuilds/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/mihai/AndroidStudioProjects/CallOfDutyBestBuilds/app/src/main/res/layout/app_bar_main.xml" value="0.3072916666666667" />
         <entry key="..\:/Users/mihai/AndroidStudioProjects/CallOfDutyBestBuilds/app/src/main/res/layout/content_main.xml" value="0.30833333333333335" />
         <entry key="..\:/Users/mihai/AndroidStudioProjects/CallOfDutyBestBuilds/app/src/main/res/layout/fragment_slideshow.xml" value="0.3072916666666667" />
         <entry key="..\:/Users/mihai/AndroidStudioProjects/CallOfDutyBestBuilds/app/src/main/res/layout/index.xml" value="0.33" />
         <entry key="..\:/Users/mihai/AndroidStudioProjects/CallOfDutyBestBuilds/app/src/main/res/layout/login.xml" value="0.33" />
-        <entry key="..\:/Users/mihai/AndroidStudioProjects/CallOfDutyBestBuilds/app/src/main/res/layout/meta_weapon.xml" value="0.25" />
-        <entry key="..\:/Users/mihai/AndroidStudioProjects/CallOfDutyBestBuilds/app/src/main/res/layout/meta_weapons.xml" value="0.22" />
+        <entry key="..\:/Users/mihai/AndroidStudioProjects/CallOfDutyBestBuilds/app/src/main/res/layout/meta_weapon.xml" value="0.1" />
+        <entry key="..\:/Users/mihai/AndroidStudioProjects/CallOfDutyBestBuilds/app/src/main/res/layout/meta_weapons.xml" value="0.33" />
         <entry key="..\:/Users/mihai/AndroidStudioProjects/CallOfDutyBestBuilds/app/src/main/res/layout/meta_weapons_activity.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/mihai/AndroidStudioProjects/CallOfDutyBestBuilds/app/src/main/res/layout/register.xml" value="0.25" />
         <entry key="..\:/Users/mihai/AndroidStudioProjects/CallOfDutyBestBuilds/app/src/main/res/menu/activity_main_drawer.xml" value="0.26979166666666665" />

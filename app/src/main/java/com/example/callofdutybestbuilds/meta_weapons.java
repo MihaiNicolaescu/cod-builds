@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.nfc.Tag;
+
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,30 +17,35 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+
 
 import com.example.callofdutybestbuilds.Objects.Weapon_meta;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
+
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.protobuf.Value;
+
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
 
 public class meta_weapons extends AppCompatActivity {
     FirebaseAuth mAuth;
     LinearLayout layout;
+    private FrameLayout adContainerView;
+    private AdView adView;
     ArrayList<Weapon_meta> weaponsBuildsArray = new ArrayList<Weapon_meta>();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -53,7 +60,7 @@ public class meta_weapons extends AppCompatActivity {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for(QueryDocumentSnapshot doc : task.getResult()){
-                        Weapon_meta weapon_temp = new Weapon_meta(doc.getData().get("weapon_name").toString(), doc.getData().get("att1").toString(), doc.getData().get("att2").toString(), doc.getId());
+                        Weapon_meta weapon_temp = new Weapon_meta(doc.getData().get("weapon_name").toString(), doc.getData().get("att1").toString(), doc.getData().get("att2").toString(), doc.getData().get("att3").toString(), doc.getData().get("att4").toString(), doc.getData().get("att5").toString(), doc.getData().get("att6").toString(), doc.getData().get("att7").toString(), doc.getData().get("att8").toString(), doc.getData().get("att9").toString(), doc.getData().get("att10").toString(), doc.getId(), doc.getData().get("youtubeLink").toString());
                         weaponsBuildsArray.add(weapon_temp);
                         Log.d("META: ---->",doc.getId() + " -> " + doc.getData().get("weapon_name") + "new obj:" + weapon_temp + "new size: " + weaponsBuildsArray.size());
                     }
@@ -68,6 +75,22 @@ public class meta_weapons extends AppCompatActivity {
         });
 
 
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
+            }
+        });
+        //get the reference to your FrameLayout
+        adContainerView = findViewById(R.id.adView_container);
+
+        //Create an AdView and put it into your FrameLayout
+        adView = new AdView(this);
+        adContainerView.addView(adView);
+        adView.setAdUnitId("ca-app-pub-3863363113592693/6041741159");
+        loadBanner();
+
+
 
     }
 
@@ -75,15 +98,20 @@ public class meta_weapons extends AppCompatActivity {
     public void createButtons(){
         for(int i = 0; i < weaponsBuildsArray.size(); i++){
             final Button button = new Button(this);
-            button.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,300));
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,300);
+            lp.setMargins(30,40,30,0);
+            button.setLayoutParams(lp);
             Log.w("meta", weaponsBuildsArray.get(i).toString());
-            button.setBackgroundResource(R.drawable.meta_weapons_bg);
+            button.setBackgroundResource(R.drawable.weapons_meta);
+            //button.setBackgroundColor(Color.parseColor("#525856"));
             button.setText(weaponsBuildsArray.get(i).getWeapon_name());
             button.setTextColor(Color.WHITE);
-            button.setTextSize(25);
-            button.setGravity(Gravity.LEFT|Gravity.BOTTOM);
-            button.setPadding(10, 10 , 10, 10);
-            button.setTypeface(Typeface.create("font/outfitregular.ttf", Typeface.NORMAL));
+            button.setTextSize(45);
+            button.setAllCaps(false);
+            button.setGravity(Gravity.CENTER|Gravity.RIGHT);
+            button.setPadding(10, 10 , 30, 10);
+            Typeface typeface = getResources().getFont(R.font.outfitregular);
+            button.setTypeface(typeface);
             button.setTag(weaponsBuildsArray.get(i).getWeapon_name());
             layout.addView(button);
             String wpName = weaponsBuildsArray.get(i).getWeapon_name();
@@ -100,6 +128,36 @@ public class meta_weapons extends AppCompatActivity {
                 }
             });
         }
+
+
+    }
+
+    private void loadBanner() {
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+
+        AdSize adSize = getAdSize();
+        // Set the adaptive ad size to the ad view.
+        adView.setAdSize(adSize);
+
+        // Start loading the ad in the background.
+        adView.loadAd(adRequest);
+    }
+    private AdSize getAdSize() {
+        //Determine the screen width to use for the ad width.
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        display.getMetrics(outMetrics);
+
+        float widthPixels = outMetrics.widthPixels;
+        float density = outMetrics.density;
+
+        //you can also pass your selected width here in dp
+        int adWidth = (int) (widthPixels / density);
+
+        //return the optimal size depends on your orientation (landscape or portrait)
+        return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth);
     }
 
     @Override

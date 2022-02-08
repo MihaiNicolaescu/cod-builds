@@ -46,7 +46,7 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-// Import the BoM for the Firebase platform
+    // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:29.0.3')
 
     // Declare the dependency for the Firebase Authentication library
@@ -55,6 +55,7 @@ dependencies {
 
     // Also declare the dependency for the Google Play services library and specify its version
     implementation 'com.google.android.gms:play-services-auth:20.0.1'
-
+    //add this line to install AdMob SDK:
+    implementation 'com.google.android.gms:play-services-ads:18.3.0'
 
 }
