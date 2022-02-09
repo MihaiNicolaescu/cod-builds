@@ -10,19 +10,16 @@
     <ScrollView
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:outlineProvider="bounds"
+        android:layout_height="450dp"
         android:id="@+id/scrollID"
-
+        android:layout_marginTop="80dp"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/metaWeaponsActivity"
-            android:orientation="vertical"
-            android:layout_marginTop="80dp"/>
+            android:orientation="vertical" />
 
 
     </ScrollView>
@@ -31,7 +28,7 @@
         android:id="@+id/adView_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-50dp"
+        android:layout_marginTop="10dp"
         android:layout_gravity="center"
         app:layout_constraintTop_toBottomOf="@id/scrollID"
         app:layout_constraintLeft_toLeftOf="parent"
