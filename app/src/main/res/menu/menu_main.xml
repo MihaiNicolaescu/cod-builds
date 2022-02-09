@@ -3,14 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/idTerms"
-        android:title="Terms &amp; Conditions" />
-    <item
         android:id="@+id/idEmail"
         android:title="Write us" />
-    <item
-        android:id="@+id/idShare"
-        android:title="Share app" />
+
     <item
         android:id="@+id/idLogout"
         android:title="Logout" />

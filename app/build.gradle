@@ -7,7 +7,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.callofdutybestbuilds"
+        applicationId "com.nicolaescugroup.codbuilds"
         minSdk 26
         targetSdk 32
         versionCode 1
